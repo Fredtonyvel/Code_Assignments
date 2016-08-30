@@ -1,3 +1,6 @@
+/*Sample code from Data Structures and Algorithms in C++,
+Adam Drozdek textbook*/
+
 #include <iostream>
 #include <cstring> //to include strcpy
 #include <vector>
@@ -37,4 +40,12 @@ int main()
 		v1.push_back(j);  //pushes 1-5 to the end of the vector
 	}
 	printVector("v1", v1); //output: v1 = (1 2 3 4 5)
+
+	vector<int> v2(3, 7);
+	printVector("v2", v2);	//output: v2 = (7 7 7)
+
+	vector<int> ::iterator i1 = v1.begin()+1;
+	vector<int> v3(i1, i1+2);
+	printVector("v3", v3);	//output: v3 = (2, 3) -- size=2 capacity=2
+	vector<int> v4(v1);	//output: v4 = (1 2 3 4 5) -- size=5 capacity=5
 }
