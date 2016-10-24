@@ -19,12 +19,12 @@ int main()
 	int pos, range1, range2;
 	cin >> pos;
 	n.erase(n.begin()+(pos-1));
-	cout << n.size() << endl;
+	/*cout << n.size() << endl;
 	for(auto &i : n)
 	{
 		cout << i << " ";
 	}
-	cout << endl;
+	cout << endl;*/
 	
 	cin >> range1 >> range2;
 	n.erase(n.begin()+(range1-1), n.begin()+(range2-1));
