@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1478201325 source:c:\users\freddyanthony\documents\data_structures_and_algorithms_codes\code_assignments\cpp_codes\account_inheritance_hierarchy\account_inheritance_hierarchy\main.cpp
+	<iostream>
+	"Account.h"
+
+1478201261 c:\users\freddyanthony\documents\data_structures_and_algorithms_codes\code_assignments\cpp_codes\account_inheritance_hierarchy\account_inheritance_hierarchy\account.h
+	<iostream>
+
+1478200704 source:c:\users\freddyanthony\documents\data_structures_and_algorithms_codes\code_assignments\cpp_codes\account_inheritance_hierarchy\account_inheritance_hierarchy\account.cpp
+	"Account.h"
+
