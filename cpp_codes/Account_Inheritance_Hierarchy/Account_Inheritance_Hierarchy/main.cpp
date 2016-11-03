@@ -9,9 +9,11 @@ int main()
 
     Account obj(2.50);
     obj.getBalance();
-    int credit = obj.credit(2.50);
-    cout << "New balance: $" << credit << endl;
+
+    cout << fixed << setprecision(2);
+    cout << "New balance: $" << obj.credit(2.50) << endl;
     obj.getBalance();
+
     obj.debit(5);
     obj.getBalance();
 
