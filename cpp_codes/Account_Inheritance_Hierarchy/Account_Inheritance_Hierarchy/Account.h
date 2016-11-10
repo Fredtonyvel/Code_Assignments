@@ -5,7 +5,7 @@
 
 class Account
 {
-private:
+protected:
     double balance;
 
 public:

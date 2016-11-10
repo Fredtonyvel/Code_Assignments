@@ -10,7 +10,7 @@ Account::Account(double Balance)
     if(Balance > 0)
     {
         cout << fixed << setprecision(2);
-        cout << "Balance = $" << balance << endl;
+        cout << "\nBalance = $" << balance << endl;
     }
     else
     {
