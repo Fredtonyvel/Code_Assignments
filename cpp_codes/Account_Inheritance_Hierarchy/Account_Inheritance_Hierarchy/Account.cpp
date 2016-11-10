@@ -7,9 +7,11 @@ using namespace std;
 Account::Account(double Balance)
 {
     balance = Balance;
+    //To print balance with trailing zeros
+    cout << fixed << setprecision(2);
     if(Balance > 0)
     {
-        cout << fixed << setprecision(2);
+        //cout << fixed << setprecision(2);
         cout << "\nBalance = $" << balance << endl;
     }
     else
@@ -18,7 +20,7 @@ Account::Account(double Balance)
         cout << "!!!\tError\t!!!\n";
         cout << "Balance not more than zero!\n";
         cout << "Resetting Balance..." << endl;
-        cout << fixed << setprecision(2);
+        //cout << fixed << setprecision(2);
         cout << "Balance = " << balance << endl;
     }
 }
@@ -50,12 +52,9 @@ bool Account::debit(double debitValue)
     }
 }
 
-void Account::getBalance()
+double Account::getBalance()
 {
-    //To print balance with trailing zeros
-    cout << fixed;
-    cout << setprecision(2);
-    cout << "---\tCurrent balance in your account = $" << balance << "\t---" << endl;
+    return balance;
 }
 
 void Account::setBalance(double Balance)
@@ -63,7 +62,7 @@ void Account::setBalance(double Balance)
     balance = Balance;
     if(Balance > 0)
     {
-        cout << "\nBalance = $" << setw(2) << balance << endl;
+        cout << "\nBalance = $" /*<< setw(2)*/ << balance << endl;
     }
     else
     {
@@ -73,4 +72,11 @@ void Account::setBalance(double Balance)
         cout << "Resetting Balance..." << endl;
         cout << "Balance = " << balance << endl;
     }
+}
+
+void Account::printBalance(double getbalance)
+{
+    cout << fixed << setprecision(2) << endl;
+    cout << "---\tCurrent balance in your account = "
+         << balance << endl; 
 }

@@ -12,8 +12,9 @@ public:
     Account(double);
     double credit(double);
     bool debit(double);
-    void getBalance();
+    double getBalance();
     void setBalance(double);
+    void printBalance(double);
 };
 
 #endif // ACOUNT_H_INCLUDED

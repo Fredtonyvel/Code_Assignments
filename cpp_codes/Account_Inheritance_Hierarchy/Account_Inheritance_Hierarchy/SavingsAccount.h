@@ -10,6 +10,9 @@ private:
 
 public:
     SavingsAccount(double, double);
+    double calculateInterest();
+    double setInterest(double);
+
 };
 
 #endif // SAVINGSACCOUNT_H_INCLUDED
