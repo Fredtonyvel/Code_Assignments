@@ -12,6 +12,8 @@ public:
     SavingsAccount(double, double);
     double calculateInterest();
     double setInterest(double);
+    double getInterest();
+    void printRate();
 
 };
 

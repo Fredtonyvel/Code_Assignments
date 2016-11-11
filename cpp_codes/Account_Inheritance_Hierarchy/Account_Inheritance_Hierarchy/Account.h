@@ -14,7 +14,7 @@ public:
     bool debit(double);
     double getBalance();
     void setBalance(double);
-    void printBalance(double);
+    void printBalance();
 };
 
 #endif // ACOUNT_H_INCLUDED

@@ -20,3 +20,14 @@ double SavingsAccount::setInterest(double int_rate)
 	interestRate = int_rate;
 	return interestRate;
 }
+
+double SavingsAccount::getInterest()
+{
+	return interestRate;
+}
+
+void SavingsAccount::printRate()
+{
+	cout << "---\tCurrent Interest Rate = " 
+		 << getInterest() << "%\t---" << endl;
+}

@@ -74,9 +74,9 @@ void Account::setBalance(double Balance)
     }
 }
 
-void Account::printBalance(double getbalance)
+void Account::printBalance()
 {
     cout << fixed << setprecision(2) << endl;
     cout << "---\tCurrent balance in your account = "
-         << balance << endl; 
+         << getBalance() << "\t---" << endl; 
 }
