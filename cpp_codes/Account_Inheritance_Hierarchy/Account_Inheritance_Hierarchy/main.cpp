@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Account.h"
 #include "SavingsAccount.h"
+#include "CheckingAccount.h"
 
 using namespace std;
 
@@ -29,6 +30,22 @@ int main()
     cout << "Rate = " << obj2.setInterest(5) << "%" << endl;
 
     obj2.printRate();
+
+    CheckingAccount obj3(obj.getBalance(), 5.50);
+    obj3.printFee();
+
+    if (obj3.chargeFee())
+    {
+        cout << "---\tFee has been charged\t---" << endl;
+        obj3.printFee();
+        obj3.printBalance();
+    }
+    else
+    {
+        cout << "---\tFee has not been charged\t---" << endl;
+        obj3.printFee();
+        obj3.printBalance();
+    }
 
     return 0;
 }
