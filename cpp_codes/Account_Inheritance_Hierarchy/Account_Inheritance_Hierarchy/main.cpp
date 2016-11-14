@@ -14,6 +14,11 @@ int main()
     cin >> balance;
     Account obj1(balance);
 
+    double interest;
+    cout << "\nSet the interest for your account\n";
+    cin >> interest;
+    SavingsAccount obj2(balance, interest);
+
     char select;
     cout << "\nWould you to start your transaction?\n";
     cout << "Enter 'y' for yes\nEnter 'n' for no\n";
@@ -28,7 +33,10 @@ int main()
             cout << "2. Debit\n";
             cout << "3. Set balance\n";
             cout << "4. Print balance\n";
-            cout << "5. Exit\n\n";
+            cout << "5. Add Interest\n";
+            cout << "6. Set Interest\n";
+            cout << "7. Print Interest\n";
+            cout << "8. Exit\n\n";
 
             int choice;
             cin >> choice;
@@ -58,7 +66,12 @@ int main()
                              << obj1.getBalance() << "\t---" << endl;
                         break;
 
-                case 5: select = 'n';
+                case 5: double c; 
+                        c = obj2.calculateInterest();
+                        obj2.credit(c);
+                        break;
+
+                case 8: select = 'n';
                         break;               
 
                 default: cout << "!!!\tPlease select a number\t!!!\n";
