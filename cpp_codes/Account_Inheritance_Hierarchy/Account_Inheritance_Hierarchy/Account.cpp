@@ -59,10 +59,11 @@ double Account::getBalance()
 
 void Account::setBalance(double Balance)
 {
+    //Account(Balance);
     balance = Balance;
     if(Balance > 0)
     {
-        cout << "\nBalance = $" /*<< setw(2)*/ << balance << endl;
+        cout << "\nBalance = $" << balance << endl;
     }
     else
     {
