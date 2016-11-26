@@ -1,0 +1,10 @@
+Balance for the account = $1000.00
+
+Amount of credit added to account = $900.25
+New balance = $1900.25
+
+Amount withdrawn from account = $855.74
+New balance = $1.00
+
+Amount to reset account = $500.50
+New balance = $500.50

@@ -1,9 +1,24 @@
-#include <iostream>
 #include "Account.h"
 #include "SavingsAccount.h"
 #include "CheckingAccount.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
+
+void Menu()
+{
+    cout << "\nChoose from the following:\n";
+    cout << "1. Credit\n";
+    cout << "2. Debit\n";
+    cout << "3. Set balance\n";
+    /*cout << "4. Interest\n";
+    cout << "5. Add Interest\n";
+    cout << "6. Set Interest\n";*/
+    cout << "7. Print balance\n";
+    //cout << "8. Print Interest\n";
+    cout << "9. Exit\n\n";
+}
 
 int main()
 {
@@ -14,11 +29,6 @@ int main()
     cin >> balance;
     Account obj1(balance);
 
-    double interest;
-    cout << "\nSet the interest for your account\n";
-    cin >> interest;
-    SavingsAccount obj2(balance, interest);
-
     char select;
     cout << "\nWould you to start your transaction?\n";
     cout << "Enter 'y' for yes\nEnter 'n' for no\n";
@@ -28,50 +38,58 @@ int main()
     {
         if (select == 'y')
         {
-            cout << "\nChoose from the following:\n";
-            cout << "1. Credit\n";
-            cout << "2. Debit\n";
-            cout << "3. Set balance\n";
-            cout << "4. Print balance\n";
-            cout << "5. Add Interest\n";
-            cout << "6. Set Interest\n";
-            cout << "7. Print Interest\n";
-            cout << "8. Exit\n\n";
+            Menu();
 
             int choice;
             cin >> choice;
 
             switch(choice)
             {
-                case 1: int credit;
+                case 1: double credit;
                         cout << "Enter the amount of credit\n";
                         cin >> credit;
                         obj1.credit(credit);
                         break;
 
-                case 2: int debit;
+                case 2: double debit;
                         cout << "Enter the amount of debit\n";
                         cin >> debit;
                         obj1.debit(debit);
                         break;
 
                 case 3: int setBalance;
-                        cout << "Enter amount to reset yout balance\n";
+                        cout << "Enter amount to reset your balance\n";
                         cin >> setBalance;
                         obj1.setBalance(setBalance);
                         break;
 
-                case 4: cout << fixed << setprecision(2);
-                        cout << "---\tCurrent balance in your account = "
-                             << obj1.getBalance() << "\t---" << endl;
-                        break;
+                /*case 4: double interest;
+                        cout << "\nSet the interest for your account\n";
+                        cin >> interest;
+                        SavingsAccount obj2(obj1.getBalance(), interest);
 
                 case 5: double c; 
                         c = obj2.calculateInterest();
                         obj2.credit(c);
                         break;
 
-                case 8: select = 'n';
+                case 6: int setInterest;
+                        cout << "Enter amount to reset interest rate:\n";
+                        cin >> setInterest;
+                        obj2.setInterest(setInterest);
+                        break;*/
+
+                case 7: cout << fixed << setprecision(2);
+                        cout << "---\tCurrent balance in your account = $"
+                             << obj1.getBalance() << "\t---" << endl;
+                        break;
+
+                /*case 8: cout << fixed << setprecision(2);
+                        cout << "---\tCurrent intrest rate to your account = "
+                             << obj2.getInterest() << "%\t---" << endl;
+                        break;*/
+
+                case 9: select = 'n';
                         break;               
 
                 default: cout << "!!!\tPlease select a number\t!!!\n";
