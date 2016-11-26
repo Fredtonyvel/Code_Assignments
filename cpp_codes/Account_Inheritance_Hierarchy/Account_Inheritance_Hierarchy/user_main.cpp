@@ -48,21 +48,31 @@ int main()
 
                 switch(choice)
                 {
-                    case 1: double credit, a;
+                    case 1: double credit;
                             cout << "Enter the amount of credit\n";
                             cin >> credit;
-                            a = obj1.credit(credit);
+                            obj1.credit(credit);
                             file << "\nAmount of credit added to account = $" << credit << endl;
-                            file << "New balance = $" << a << endl;
+                            file << "New balance = $" << obj1.getBalance() << endl;
                             break;
 
-                    case 2: double debit, b;
+                    case 2: double debit;
                             cout << "Enter the amount of debit\n";
                             cin >> debit;
-                            b = obj1.debit(debit);
-                            file << "\nAmount withdrawn from account = $" << debit << endl;
-                            file << "New balance = $" << b << endl;
-                            break;
+                            obj1.debit(debit);
+                            if (obj1.debit(debit) == true)
+                            {
+                                file << "\nAmount withdrawn from account = $" << debit << endl;
+                                file << "New balance = $" << obj1.getBalance() << endl;
+                                break;
+                            }
+                            else
+                            {
+                                file << "\nAmount attempted to be withdrawn from account = $" << debit << endl;
+                                file << "Error processing transaction since debit amount exceeds balance\n"; 
+                                break;
+                            }
+
 
                     case 3: double setBalance;
                             cout << "Enter amount to reset your balance\n";

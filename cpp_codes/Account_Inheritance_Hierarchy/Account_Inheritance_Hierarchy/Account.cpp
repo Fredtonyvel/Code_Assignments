@@ -59,7 +59,6 @@ double Account::getBalance()
 
 void Account::setBalance(double Balance)
 {
-    //Account(Balance);
     balance = Balance;
     if(Balance > 0)
     {
