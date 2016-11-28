@@ -1,7 +1,14 @@
-Balance for the account = $2000.00
+---    Transaction History    ---
 
-Amount of credit added to account = $1000.50
-New balance = $3000.50
+Local time is: Mon Nov 28 14:17:49 2016
+	Balance for the account = $5000.00
 
-Amount attempted to be withdrawn from account = $1874.50
-Error processing transaction since debit amount exceeds balance
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Mon Nov 28 14:26:55 2016
+	Balance for the account = $2000.00
+
+---    End of History    ---
+

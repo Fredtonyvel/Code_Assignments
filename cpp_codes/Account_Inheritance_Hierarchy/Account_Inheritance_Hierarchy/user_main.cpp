@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <stdio.h>
+#include <time.h>
 
 using namespace std;
 
@@ -19,17 +21,25 @@ void Menu()
 
 int main()
 {
-    cout << "Welcome to the Account Inheritance Hierarchy!\n";
+    //cout << "Welcome to the Account Inheritance Hierarchy!\n";
+    cout << "Welcome User!\n";
+
+    time_t rawtime;
+
+    time(&rawtime);
+    cout << "Local time is: " << ctime(&rawtime);
 
     ofstream file("User.txt", ios_base::app | ios_base::out);
 
     if (file.is_open())
     {
+        file << "---    Transaction History    ---" << endl;
+        file << "\nLocal time is: " << ctime(&rawtime);
+        
         double balance;
         cout << "\nEnter balance for your account\n";
         cin >> balance;
-        file << fixed << setprecision(2)
-             << "Balance for the account = $" << balance << endl;
+        file << fixed << setprecision(2) << "\tBalance for the account = $" << balance << endl;
         Account obj1(balance);
 
         char select;
@@ -42,9 +52,10 @@ int main()
             if (select == 'y')
             {
                 Menu();
-
+                cout << "Select Number: ";
                 int choice;
                 cin >> choice;
+                cout << endl;
 
                 switch(choice)
                 {
@@ -52,34 +63,49 @@ int main()
                             cout << "Enter the amount of credit\n";
                             cin >> credit;
                             obj1.credit(credit);
-                            file << "\nAmount of credit added to account = $" << credit << endl;
-                            file << "New balance = $" << obj1.getBalance() << endl;
+                            file << "\nLocal time is: " << ctime(&rawtime);
+                            file << "\tAmount of credit added to account = $" << credit << endl;
+                            file << "\tNew balance = $" << obj1.getBalance() << endl;
                             break;
 
-                    case 2: double debit;
+                    case 2: double debit, c;
                             cout << "Enter the amount of debit\n";
                             cin >> debit;
-                            obj1.debit(debit);
-                            if (obj1.debit(debit) == true)
+                            c = obj1.debit(debit);
+                            if (c == true)
                             {
-                                file << "\nAmount withdrawn from account = $" << debit << endl;
-                                file << "New balance = $" << obj1.getBalance() << endl;
-                                break;
+                                file << "\nLocal time is: " << ctime(&rawtime);
+                                file << "\tAmount withdrawn from account = $" << debit << endl;
+                                file << "\tNew balance = $" << obj1.getBalance() << endl;
                             }
                             else
                             {
-                                file << "\nAmount attempted to be withdrawn from account = $" << debit << endl;
-                                file << "Error processing transaction since debit amount exceeds balance\n"; 
-                                break;
+                                file << "\nLocal time is: " << ctime(&rawtime);
+                                file << "\tAmount attempted to be withdrawn from account = $" << debit << endl;
+                                file << "\tError processing transaction since debit amount exceeds balance" << endl; 
+                                file << "\tCurrent balance = $" << obj1.getBalance() << endl;
                             }
+                            break;
 
 
                     case 3: double setBalance;
                             cout << "Enter amount to reset your balance\n";
                             cin >> setBalance;
-                            obj1.setBalance(setBalance);
-                            file << "\nAmount to reset account = $" << setBalance << endl;
-                            file << "New balance = $" << obj1.getBalance() << endl;
+                            if (setBalance < 0)
+                            {
+                                file << "\nLocal time is: " << ctime(&rawtime);
+                                file << "\tThe amount entered to reset balance was less than 0\n";
+                                file << "\tBalance automatically reset to 0\n";
+                                obj1.setBalance(setBalance);
+                                file << "\tNew balance = $" << obj1.getBalance() << endl;
+                            }
+                            else
+                            {
+                                obj1.setBalance(setBalance);
+                                file << "\nLocal time is: " << ctime(&rawtime);
+                                file << "\tAmount to reset account = $" << setBalance << endl;
+                                file << "\tNew balance = $" << obj1.getBalance() << endl;
+                            }
                             break;
 
                     case 4: cout << fixed << setprecision(2);
@@ -93,10 +119,10 @@ int main()
                     default: cout << "!!!\tPlease select a number\t!!!\n";
                 }
             }   
+        } while (select != 'n' && select == 'y');  
 
-        } while (select != 'n' && select == 'y');
-
-        cout << "\n\nExiting System\t---\tHave a nice day!\n\n";
+        cout << "\nExiting System\t---\tHave a nice day!\n\n";
+        file << "\n---    End of History    ---\n\n";
     }
 
     file.close();
@@ -105,30 +131,7 @@ int main()
 }
 
 
-
-/*Account obj(2.50);
-    obj.printBalance();
-
-    cout << "New balance: $" << obj.credit(2.50) << endl;
-    obj.printBalance();
-
-    obj.debit(6);
-    obj.printBalance();
-
-    obj.setBalance(10.50);
-    obj.printBalance();
-
-    SavingsAccount obj2(obj.getBalance(), 2);
-    obj2.printBalance();
-
-    cout << obj2.calculateInterest() << endl;
-
-    cout << "Resetting interest rate...\n";
-    cout << "Rate = " << obj2.setInterest(5) << "%" << endl;
-
-    obj2.printRate();
-
-    CheckingAccount obj3(obj.getBalance(), 5.50);
+    /*CheckingAccount obj3(obj.getBalance(), 5.50);
     obj3.printFee();
 
     if (obj3.chargeFee())
