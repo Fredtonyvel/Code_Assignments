@@ -7,6 +7,7 @@
 #include <string>
 #include <stdio.h>
 #include <time.h>
+#include <regex>
 
 using namespace std;
 
@@ -45,9 +46,10 @@ int main()
 
         while(getline(file, line))
         {
+            //cout << line <<  endl; 
+
             for (int i = 0; i < line.length(); i++)
             {
-                //cout << line[i] << endl;
                 count++;
             }
         }

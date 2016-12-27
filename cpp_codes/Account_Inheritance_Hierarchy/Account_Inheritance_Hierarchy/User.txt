@@ -1,14 +1,28 @@
 ---    Transaction History    ---
 
-Local time is: Mon Nov 28 14:17:49 2016
-	Balance for the account = $5000.00
+Local time is: Fri Dec  2 13:33:33 2016
+	Balance for the account = $0.34
 
----    End of History    ---
+Local time is: Fri Dec  2 13:33:33 2016
+	Amount to reset account = $0.35
+	New balance = $0.35
 
----    Transaction History    ---
+Local time is: Fri Dec  2 13:33:33 2016
+	Amount of credit added to account = $0.30
+	New balance = $0.65
 
-Local time is: Mon Nov 28 14:26:55 2016
-	Balance for the account = $2000.00
+Local time is: Fri Dec  2 13:33:33 2016
+	Amount attempted to be withdrawn from account = $1.00
+	Error processing transaction since debit amount exceeds balance
+	Current balance = $0.65
+
+Local time is: Fri Dec  2 13:33:33 2016
+	Amount of credit added to account = $50000.00
+	New balance = $50000.65
+
+Local time is: Fri Dec  2 13:33:33 2016
+	Amount withdrawn from account = $40000.00
+	New balance = $10000.65
 
 ---    End of History    ---
 
