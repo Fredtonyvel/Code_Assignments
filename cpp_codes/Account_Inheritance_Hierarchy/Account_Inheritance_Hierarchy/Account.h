@@ -15,6 +15,9 @@ public:
     double getBalance();
     void setBalance(double);
     void printBalance();
+
+    friend ostream& operator << (ostream &out, Account &obj);
+    friend istream& operator >> (istream &in, Account &obj);
 };
 
 #endif // ACOUNT_H_INCLUDED

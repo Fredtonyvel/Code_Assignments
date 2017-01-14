@@ -15,6 +15,9 @@ public:
     double getFee();
     void printFee();
 
+    friend ostream& operator << (ostream &out, Account &obj);
+    friend istream& operator >> (istream &in, Account &obj);
+
 };
 
 #endif // CHECKINGACCOUNT_H_INCLUDED

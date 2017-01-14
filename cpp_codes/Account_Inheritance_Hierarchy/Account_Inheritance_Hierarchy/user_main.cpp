@@ -28,8 +28,9 @@ int main()
 
     time(&rawtime);
     cout << "Local time is: " << ctime(&rawtime);
+    
 
-    ofstream file("User.txt", ios_base::app | ios_base::out);
+    ofstream file("Draft.txt", ios_base::app | ios_base::out);
 
     if (file.is_open())
     {

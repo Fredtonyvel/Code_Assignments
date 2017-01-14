@@ -15,6 +15,9 @@ public:
     double getInterest();
     void printRate();
 
+    friend ostream& operator << (ostream &out, Account &obj);
+    friend istream& operator >> (istream &in, Account &obj);
+
 };
 
 #endif // SAVINGSACCOUNT_H_INCLUDED

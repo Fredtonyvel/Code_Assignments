@@ -2,46 +2,47 @@
 #define LIST_H
 
 #include "Professor.h"
+#include <string>
 
-class listNode
+class Node
 {
 public:
-	std::string data;
-	listNode *next;
-
-	listNode()
+	Professor professor;
+	Node *next;
+	
+	Node()
 	{
 		next = NULL;
 	}
-	listNode(std::string info, listNode *ptr = NULL)
+	Node(const Professor &obj, Node *ptr = NULL)
 	{
-		data = info;
+		professor = obj;
 		next = ptr;
 	}
+
 };
 
 class list
 {
 private:
-	listNode *head;
-	listNode *tail;
+	Node *head;
+	Node *tail;
 
 public:
 	list()
 	{
-		head = NULL;
-		tail = NULL;
+		head = tail = NULL;
 	}
 
-	//~list();
+	~list();
 
-	Professor* prof;
 	int isEmpty()
 	{
 		return head == NULL;
 	}
-	void addToHead(Professor *info);
+	void addToHead(const Professor &professor);
 	void addToTail();
+	void print();
 };
 
 #endif /* LIST_H */
