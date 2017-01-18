@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -11,13 +12,13 @@ class Person
 {
 public:
 	Person();
-	Person(string, string, string);
+	Person(string, string, string, string);
 	~Person();
 
 	friend ostream &operator << (ostream &out, const Person &p);
 	friend istream &operator >> (istream &in, Person &p);
 
-	void setName(string);
+	void setName(string, string);
 	string getName();
 	void setLocation(string);
 	string getLocation();
@@ -29,12 +30,12 @@ public:
 	void displayPerson();
 
 private:
-	string name;
+	string fname, lname;
 	char gender;
 	int age;
 	string dateOfBirth;
 	string location;
-	string phone;	
+	string phone;
 };
 
 #endif // PERSON_H

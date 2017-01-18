@@ -1,20 +1,23 @@
 #include "Person.h"
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
 Person::Person()
 {
-	name = "No name";
+	fname = "No first name";
+	lname = "No last name";
 	location = "No Location";
 	phone = "###-###-####";
 }
 
-Person::Person(string n, string l, string p)
+Person::Person(string fn, string ln, string l, string p)
 {
-	setName(n);
-	setLocation(l);
-	setPhone(p);
+	fname = fn;
+	lname = ln;
+	location = l;
+	phone = p;
 }
 
 Person::~Person()
@@ -22,8 +25,12 @@ Person::~Person()
 	cout << "\nDestroying Person..." << endl;
 }
 
-void Person::setName(string n) {name = n;}
-string Person::getName() {return name;}
+void Person::setName(string fn, string ln) 
+{
+	fname = fn;
+	lname = ln;
+}
+string Person::getName() {return fname + " " + lname;}
 
 void Person::setLocation(string l) {location = l;}
 string Person::getLocation() {return location;}
@@ -34,7 +41,7 @@ string Person::getPhone() {return phone;}
 
 ostream &operator << (ostream &out, const Person &p)
 {
-	out << "\nName = " << p.name << endl;
+	out << "\nName = " << p.fname << ", " << p.lname << endl;
 	out << "Location = " << p.location << endl;
 	out << "Phone # = " << p.phone << endl << endl;
 	return out;
@@ -44,8 +51,10 @@ istream &operator >> (istream &in, Person &p)
 {
 	cin.ignore();
 	cout << "\nEnter your name, location, and phone #\n";
-	cout << "Name (first, last): ";
-	getline(in, p.name);
+	cout << "First name: ";
+	getline(in, p.fname);
+	cout << "Last name: ";
+	getline(in, p.lname);
 	cout << "Location (City, State): ";
 	getline(in, p.location);
 	cout << "Phone (###-###-####): ";
@@ -58,9 +67,9 @@ void Person::savePerson()
 	ofstream file("PersonList.txt", ios::out | ios::app);
 	if (file.is_open())
 	{
-		file << name << endl;
-		file << location << endl;
-		file << phone << endl << endl;
+		file << fname << "," << lname << "|";
+		file << location << "|";
+		file << phone << endl;
 	}
 
 	file.close();
@@ -71,24 +80,77 @@ void Person::savePerson()
 void Person::loadPerson()
 {
 	ifstream file("PersonList.txt", ios::in);
-	string line, n, l, p;
-	if (file.is_open())
+	string line, fn, ln, l, p;
+	int count = 0;
+	vector<string> vfname;
+	vector<string> vlname;
+	vector<string> vloc;
+	vector<string> vpho;
+
+	string search_name;
+	cout << "Enter name you are searching for: ";
+	cin >> search_name;
+
+	if (!file.is_open())
 	{
-		while(!file.eof())
+		cerr << "Failed to open file" << endl;
+	}	
+
+	while(getline(file, line))
+	{
+		if (line.find(search_name) != string::npos)
 		{
-			cin.ignore();
-			getline(file, n);
-			getline(file, l);
-			getline(file, p);
-			
-			setName(n);
-			setLocation(l);
-			setPhone(p);
+			stringstream text(line);
+
+			getline(text, fn, ',');
+			vfname.push_back(fn);
+
+			getline(text, ln, '|');
+			vlname.push_back(ln);
+
+			getline(text, l, '|');
+			vloc.push_back(l);
+
+			getline(text, p);
+			vpho.push_back(p);
+
+			count++;
+
+			cout << "\n" << search_name << " found and loaded into the system!" << endl;
 		}
+		else
+		{
+			cout << search_name << " not found..." << endl;
+		}
+	}	
+
+	/*while(getline(file, line))
+	{
+		stringstream text(line);
+
+		getline(text, fn, ',');
+		vfname.push_back(fn);
+
+		getline(text, ln, '|');
+		vlname.push_back(ln);
+
+		getline(text, l, '|');
+		vloc.push_back(l);
+
+		getline(text, p);
+		vpho.push_back(p);
+
+		count++;
+	}*/
+
+	for (int i = 0; i < count; i++)
+	{
+		setName(vfname[i], vlname[i]);
+		setLocation(vloc[i]);
+		setPhone(vpho[i]);		
 	}
-	file.close();
 	
-	cout << "\nPerson loaded into the system!" << endl;
+	file.close();
 }
 
 void Person::displayPerson()

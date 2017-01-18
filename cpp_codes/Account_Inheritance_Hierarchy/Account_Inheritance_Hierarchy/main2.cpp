@@ -7,7 +7,6 @@ using namespace std;
 
 int main()
 {
-	//Person p("Freddy Velez", "Woodside, NY", "347-813-6946");
 	Person p;
 
 	char choice;

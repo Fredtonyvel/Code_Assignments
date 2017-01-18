@@ -8,12 +8,12 @@ using namespace std;
 
 int main()
 {
-	Professor obj("Freddy", "Velez", "5.15NB", "vfredanthony@yahoo.com", "347-813-6946");
-	//obj.printProf();
+	Professor prof("Freddy", "Velez", "5.15NB", "vfredanthony@yahoo.com", "347-813-6946");
+	//prof.printProf();
 
-	list obj2;
-	obj2.addToHead(obj);
-	obj2.print();
+	list ll;
+	ll.addToHead(prof);
+	ll.print();
 
 	return 0;
 }
