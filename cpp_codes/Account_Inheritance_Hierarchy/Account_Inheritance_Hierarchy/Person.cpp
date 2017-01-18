@@ -96,9 +96,11 @@ void Person::loadPerson()
 		cerr << "Failed to open file" << endl;
 	}	
 
+	//Skip lines until you find the name you're looking for
 	while(getline(file, line))
 	{
-		if (line.find(search_name) != string::npos)
+		if (line.find(search_name) != string::npos)	//Using "find" method to search name
+			                                        //until the end of string/file
 		{
 			stringstream text(line);
 
