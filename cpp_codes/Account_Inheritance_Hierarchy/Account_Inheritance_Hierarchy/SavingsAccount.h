@@ -7,17 +7,18 @@ class SavingsAccount : public Account
 {
 private:
     double interestRate;
-
+    double interest;
+    
 public:
+	SavingsAccount();
     SavingsAccount(double, double);
     double calculateInterest();
     double setInterest(double);
     double getInterest();
     void printRate();
 
-    friend ostream& operator << (ostream &out, Account &obj);
-    friend istream& operator >> (istream &in, Account &obj);
-
+    void loadBalance();
+    void viewHistory();
 };
 
 #endif // SAVINGSACCOUNT_H_INCLUDED

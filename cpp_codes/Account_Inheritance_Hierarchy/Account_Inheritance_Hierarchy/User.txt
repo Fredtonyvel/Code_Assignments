@@ -1,28 +1,102 @@
 ---    Transaction History    ---
 
 Local time is: Fri Dec  2 13:33:33 2016
-	Balance for the account = $0.34
+Balance = 0.34
 
 Local time is: Fri Dec  2 13:33:33 2016
-	Amount to reset account = $0.35
-	New balance = $0.35
+Amount to reset account = 0.35
+Balance = 0.35
 
 Local time is: Fri Dec  2 13:33:33 2016
-	Amount of credit added to account = $0.30
-	New balance = $0.65
+Amount of credit added to account = 0.30
+Balance = 0.65
 
 Local time is: Fri Dec  2 13:33:33 2016
-	Amount attempted to be withdrawn from account = $1.00
+	Amount attempted to be withdrawn from account = 1.00
 	Error processing transaction since debit amount exceeds balance
-	Current balance = $0.65
+	Balance = 0.65
 
 Local time is: Fri Dec  2 13:33:33 2016
-	Amount of credit added to account = $50000.00
-	New balance = $50000.65
+	Amount of credit added to account = 50000.00
+	Balance = 50000.65
 
 Local time is: Fri Dec  2 13:33:33 2016
-	Amount withdrawn from account = $40000.00
-	New balance = $10000.65
+	Amount withdrawn from account = 40000.00
+	Balance = 10000.65
+
+Local time is: Fri Dec  2 13:33:33 2016
+	Amount withdrawn from account = 100.30
+	Balance = 9900.35
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Mon Jan 23 17:14:20 2017
+	Balance = 9900.35
+
+Local time is: Mon Jan 23 17:14:20 2017
+	Amount of credit added to account = 300.50
+	Balance = 10200.85
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Mon Jan 23 17:33:31 2017
+	Balance for the account = $10200.85
+
+Local time is: Mon Jan 23 17:33:31 2017
+	Amount of credit added to account = 300.00
+	Balance = 10500.85
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Mon Jan 23 17:34:04 2017
+	Balance for the account = $10500.85
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Mon Jan 23 17:34:56 2017
+	Balance for the account = $10500.85
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Mon Jan 23 19:50:08 2017
+	Balance for the account = $10500.85
+
+Local time is: Mon Jan 23 19:50:08 2017
+	Amount of credit added to account = 500.15
+	Balance = 11001.00
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Tue Jan 24 15:16:00 2017
+	Balance for the account = $11001.00
+
+Local time is: Tue Jan 24 15:16:00 2017
+	Amount withdrawn from account = 500.00
+	Balance = 10501.00
+
+Local time is: Tue Jan 24 15:16:00 2017
+	Amount attempted to be withdrawn from account = 3000000.00
+	Error processing transaction since debit amount exceeds balance
+	Balance = 10501.00
+
+---    End of History    ---
+
+---    Transaction History    ---
+
+Local time is: Tue Jan 24 16:17:39 2017
+	Balance for the account = $10501.00
 
 ---    End of History    ---
 

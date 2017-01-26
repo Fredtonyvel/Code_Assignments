@@ -15,8 +15,8 @@ public:
     double getFee();
     void printFee();
 
-    friend ostream& operator << (ostream &out, Account &obj);
-    friend istream& operator >> (istream &in, Account &obj);
+    //friend ostream& operator << (ostream &out, CheckingAccount &obj);
+    //friend istream& operator >> (istream &in, CheckingAccount &obj);
 
 };
 

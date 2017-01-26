@@ -12,8 +12,8 @@ using namespace std;
 void Menu()
 {
     cout << "\nChoose from the following:\n";
-    cout << "1. Credit\n";
-    cout << "2. Debit\n";
+    cout << "1. Deposit\n";
+    cout << "2. Withdraw\n";
     cout << "3. Set balance\n";
     cout << "4. Print balance\n";
     cout << "5. Exit\n\n";
@@ -21,7 +21,6 @@ void Menu()
 
 int main()
 {
-    //cout << "Welcome to the Account Inheritance Hierarchy!\n";
     cout << "Welcome User!\n";
 
     time_t rawtime;
@@ -30,7 +29,7 @@ int main()
     cout << "Local time is: " << ctime(&rawtime);
     
 
-    ofstream file("Draft.txt", ios_base::app | ios_base::out);
+    ofstream file("User.txt", ios_base::app | ios_base::out);
 
     if (file.is_open())
     {
@@ -65,8 +64,8 @@ int main()
                             cin >> credit;
                             obj1.credit(credit);
                             file << "\nLocal time is: " << ctime(&rawtime);
-                            file << "\tAmount of credit added to account = $" << credit << endl;
-                            file << "\tNew balance = $" << obj1.getBalance() << endl;
+                            file << "\tAmount of credit added to account = " << credit << endl;
+                            file << "\tBalance = " << obj1.getBalance() << endl;
                             break;
 
                     case 2: double debit, c;
@@ -76,15 +75,15 @@ int main()
                             if (c == true)
                             {
                                 file << "\nLocal time is: " << ctime(&rawtime);
-                                file << "\tAmount withdrawn from account = $" << debit << endl;
-                                file << "\tNew balance = $" << obj1.getBalance() << endl;
+                                file << "\tAmount withdrawn from account = " << debit << endl;
+                                file << "\tBalance = " << obj1.getBalance() << endl;
                             }
                             else
                             {
                                 file << "\nLocal time is: " << ctime(&rawtime);
-                                file << "\tAmount attempted to be withdrawn from account = $" << debit << endl;
+                                file << "\tAmount attempted to be withdrawn from account = " << debit << endl;
                                 file << "\tError processing transaction since debit amount exceeds balance" << endl; 
-                                file << "\tCurrent balance = $" << obj1.getBalance() << endl;
+                                file << "\tBalance = " << obj1.getBalance() << endl;
                             }
                             break;
 
@@ -98,14 +97,14 @@ int main()
                                 file << "\tThe amount entered to reset balance was less than 0\n";
                                 file << "\tBalance automatically reset to 0\n";
                                 obj1.setBalance(setBalance);
-                                file << "\tNew balance = $" << obj1.getBalance() << endl;
+                                file << "\tBalance = " << obj1.getBalance() << endl;
                             }
                             else
                             {
                                 obj1.setBalance(setBalance);
                                 file << "\nLocal time is: " << ctime(&rawtime);
-                                file << "\tAmount to reset account = $" << setBalance << endl;
-                                file << "\tNew balance = $" << obj1.getBalance() << endl;
+                                file << "\tAmount to reset account = " << setBalance << endl;
+                                file << "\tBalance = " << obj1.getBalance() << endl;
                             }
                             break;
 

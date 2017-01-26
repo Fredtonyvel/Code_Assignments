@@ -2,6 +2,11 @@
 
 using namespace std;
 
+Account::Account()
+{
+    balance = 0;
+}
+
 //Constructor that initializes data member to
 //parameter's value and checks if value > 0
 Account::Account(double Balance)

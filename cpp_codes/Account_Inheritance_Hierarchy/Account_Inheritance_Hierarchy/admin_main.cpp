@@ -5,6 +5,8 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <algorithm>
+#include <vector>
 #include <stdio.h>
 #include <time.h>
 #include <regex>
@@ -14,59 +16,63 @@ using namespace std;
 void Menu()
 {
     cout << "\nChoose from the following:\n";
-    cout << "1. Credit\n";
-    cout << "2. Debit\n";
-    cout << "3. Set balance\n";
-    cout << "4. Print balance\n";
-    cout << "5. Exit\n\n";
+    cout << "1. Load balance\n";
+    cout << "2. View History\n";
+    cout << "3. Calculate interest\n"; 
+    cout << "4. Print rate\n";
+    cout << "5. Print balance\n";
+    cout << "6. Set interest\n";
+    cout << "7. Exit\n\n";
 }
 
 int main()
 {
-    //cout << "Welcome to the Account Inheritance Hierarchy!\n";
     cout << "Welcome Admin!\n\n";
 
-    time_t rawtime;
+    SavingsAccount obj;
 
-    time(&rawtime);
+    //time_t rawtime;
+
+    //time(&rawtime);
     //cout << "Local time is: " << ctime(&rawtime);
 
-    ifstream file("User.txt");
-    string line;
-    int count = 0;
-    ofstream file2("User.txt", ios_base::app | ios_base::out);
 
-    if (file.is_open() && file2.is_open())
-    {   
-        //double balance;
-        //cout << "\nEnter balance for your account\n";
-        //cin >> balance;
-        //file << fixed << setprecision(2) << "\tBalance for the account = $" << balance << endl;
-        //Account obj1(balance);
+    cout << "\nEnter 'y' to activate system\n";
+    cout << "Enter 'n' to exit\n";
 
-        while(getline(file, line))
+    char select;
+    cout << "Select: ";
+    cin >> select;
+    
+    do
+    {
+        if (select == 'y')
         {
-            //cout << line <<  endl; 
+            Menu();
+            int choice;
+            cout << "Choice: ";
+            cin >> choice;
 
-            for (int i = 0; i < line.length(); i++)
+            switch(choice)
             {
-                count++;
+                case 1: obj.loadBalance(); break;
+                case 2: obj.viewHistory(); break;
+                case 3: cout << "Calculated interest = $" << obj.calculateInterest() << endl; break;
+                case 4: cout << "Interest rate = " << obj.getInterest() << "%" << endl; break;
+                case 5: cout << "Balance = $" << obj.getBalance() << endl; break;
+                case 6: double r;
+                        cout << "Set new rate: ";
+                        cin >> r;
+                        obj.setInterest(r);
+                        break;    
+                case 7: select = 'n'; break;
+                default: cout << "Pleace select a number!" << endl;
             }
         }
-        cout << "\nNumber of characters in the text file: " << count << endl;
-        //cout << endl;
-    }
+    } while (select == 'y' && select != 'n');
 
-    file.close();
-    file2.close();
+    cout << "\nExiting System\t---\tHave a nice day!\n\n";
+    //cout << "\nNumber of characters in the text file: " << count << endl << endl;       
 
     return 0;
 }
-
-        /*double rate;
-        cout << "Enter interest for the account:";
-        cin >> rate;
-        SavingsAccount obj_admin(obj1.getBalance(), rate);
-        obj_admin.calculateInterest();
-        obj_admin.getBalance();
-        */
