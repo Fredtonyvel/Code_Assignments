@@ -60,7 +60,7 @@ int main()
                 switch(choice)
                 {
                     case 1: double credit;
-                            cout << "Enter the amount of credit\n";
+                            cout << "Enter the amount to deposit\n";
                             cin >> credit;
                             obj1.credit(credit);
                             file << "\nLocal time is: " << ctime(&rawtime);
@@ -69,7 +69,7 @@ int main()
                             break;
 
                     case 2: double debit, c;
-                            cout << "Enter the amount of debit\n";
+                            cout << "Enter the amount to withdraw\n";
                             cin >> debit;
                             c = obj1.debit(debit);
                             if (c == true)

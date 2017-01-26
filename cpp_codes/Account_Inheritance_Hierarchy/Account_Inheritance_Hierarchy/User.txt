@@ -100,3 +100,27 @@ Local time is: Tue Jan 24 16:17:39 2017
 
 ---    End of History    ---
 
+---    Transaction History    ---
+
+Local time is: Thu Jan 26 08:12:51 2017
+	Balance for the account = $10501.00
+---    Transaction History    ---
+
+Local time is: Thu Jan 26 08:14:09 2017
+	Balance for the account = $10501.00
+
+Local time is: Thu Jan 26 08:14:09 2017
+	Amount attempted to be withdrawn from account = 600000.00
+	Error processing transaction since debit amount exceeds balance
+	Balance = 10501.00
+
+Local time is: Thu Jan 26 08:14:09 2017
+	Amount withdrawn from account = 6000.00
+	Balance = 4501.00
+
+Local time is: Thu Jan 26 08:14:09 2017
+	Amount of credit added to account = 499.00
+	Balance = 5000.00
+
+---    End of History    ---
+
