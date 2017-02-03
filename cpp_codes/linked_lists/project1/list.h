@@ -41,7 +41,8 @@ public:
 		return head == NULL;
 	}
 	void addToHead(const Professor &professor);
-	void addToTail();
+	void addToTail(const Professor &professor);
+	void addNode(const Professor &professor, int);
 	void print();
 };
 

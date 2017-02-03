@@ -1,9 +1,6 @@
-#include <string>
-#include <iostream>
+#include "Professor.h"
 
 using namespace std;
-
-#include "Professor.h"
 
 Professor::Professor()
 {
@@ -59,4 +56,26 @@ void Professor::printProf()
 	cout << "Office location: " << room << endl;
 	cout << "Email: " << email << endl;
 	cout << "Contact number: " << phone << endl;
+}
+
+ostream &operator << (ostream &out, const Professor &p)
+{
+	out << "Professor Name: " << p.firstName << " " << p.lastName << endl;
+	out << "Office Room #: " << p.room << endl;
+	out << "Email: " << p.email << endl;
+	out << "Phone #: " << p.phone << endl;
+	return out;
+}
+
+istream &operator >> (istream &in, Professor &p)
+{
+	cout << "Enter Professor first and last name: ";
+	in >> p.firstName >> p.lastName;
+	cout << "Enter Room #: ";
+	in >> p.room;
+	cout << "Enter email address: ";
+	in >> p.email;
+	cout << "Enter phone #: ";
+	in >> p.phone;
+	return in;
 }

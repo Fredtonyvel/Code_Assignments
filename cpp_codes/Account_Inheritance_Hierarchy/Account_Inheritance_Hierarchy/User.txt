@@ -124,3 +124,10 @@ Local time is: Thu Jan 26 08:14:09 2017
 
 ---    End of History    ---
 
+---    Transaction History    ---
+
+Local time is: Wed Feb  1 16:02:31 2017
+	Balance for the account = $5000.00
+
+---    End of History    ---
+

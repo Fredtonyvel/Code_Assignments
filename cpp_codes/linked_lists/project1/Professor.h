@@ -1,26 +1,34 @@
 #ifndef PROFESSOR_H
 #define PROFESSOR_H
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 class Professor
 {
 public:
 	Professor();
-	Professor(std::string, std::string, std::string, std::string, std::string);
+	Professor(string, string, string, string, string);
 	~Professor();
 
-	std::string getFirstName();
-	std::string getLastName();
-	std::string getRoomNum();
-	std::string getEmail();
-	std::string getPhone();
+	string getFirstName();
+	string getLastName();
+	string getRoomNum();
+	string getEmail();
+	string getPhone();
 	void printProf();
 
+	friend ostream &operator << (ostream &out, const Professor &p);
+	friend istream &operator >> (istream &in, Professor &p);
+
 private:
-	std::string firstName;
-	std::string lastName;
-	std::string room;
-	std::string email;
-	std::string phone;
+	string firstName;
+	string lastName;
+	string room;
+	string email;
+	string phone;
 };
 
-#endif /* */
+#endif /* PROFESSOR_H */
