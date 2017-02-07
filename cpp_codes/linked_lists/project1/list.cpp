@@ -24,14 +24,12 @@ void list::addToHead(const Professor &professor)
 }
 
 void list::addToTail(const Professor &professor)
-{
-	Node *ptr = new Node(professor);
-	
-	if (head == NULL)
-		head = tail = ptr;
-	else if (tail != NULL)
+{	
+	if (isEmpty())
+		head = tail = new Node(professor);
+	else
 	{
-		tail->next = ptr;
+		tail->next = new Node(professor);
 		tail = tail->next;
 	}
 }
