@@ -24,7 +24,7 @@ void List::addToHead(int info)
 		tail = head;
 }
 
-//Inserting element to the back of the list
+//Inserting element to the end of the list
 void List::addToTail(int info)
 {
 	//if list is empty, add node to list 
@@ -41,25 +41,45 @@ void List::addToTail(int info)
 //Inserting element at any position on the list 
 void List::addNode(int, int)
 {
-	
+	/* code */
 }
 
 //Removing element from front of the list
-int List::deleteFromHead(int info)
+int List::deleteFromHead()
 {
-	return ;
+	int info = head->data;	//storing value of head node to var info
+	Node *ptr = head;		//pointing ptr to the node that head is pointing to
+	head = head->next;		//pointing head to the next element
+	delete ptr;				//deleting ptr & associated node
+	
+	return info;
 }
 
-//Removing element from back of the list
-int List::deleteFromTail(int info)
+//Removing element from end of the list
+int List::deleteFromTail()
 {
-	return ;
+	int info = tail->data;	//storing value of tail node to var info
+	if (head == tail)		//If there's only one element
+	{
+		delete head;		//delete it
+		head = tail = NULL;	//and make head & tail point to NULL
+	}
+	else
+	{
+		Node *ptr;
+		//Traverse ptr through the list until you get to the 2nd to last element (tail)
+		for(ptr = head; ptr->next != tail; ptr = ptr->next);
+		delete tail;	
+		tail = ptr;		//since tail was deleted, reset it to the node ptr is pointing to
+		tail->next = NULL;	//to make sure that it is the last element on the list
+	}
+	return info;
 }
 
 //Removing element from the list
-int List::deleteFromList(int, int)
+int List::deleteFromList(int info)
 {
-	return ;
+	//return ;
 }
 
 void List::printList()
@@ -75,5 +95,5 @@ void List::printList()
 		cout << ptr->data << " +-> ";
 		ptr = ptr->next;  //move ptr to the next element
 	}
-	cout << "NULL\n";
+	cout << "NULL\n\n";
 }

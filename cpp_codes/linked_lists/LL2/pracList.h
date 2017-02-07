@@ -38,9 +38,9 @@ public:
 	void addNode(int, int);
 
 	//Delete Node member functions
-	int deleteFromHead(int);
-	int deleteFromTail(int);
-	int deleteFromList(int, int);
+	int deleteFromHead();
+	int deleteFromTail();
+	int deleteFromList(int);
 	
 	void printList();
 };
