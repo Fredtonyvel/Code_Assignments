@@ -69,6 +69,7 @@ int List::deleteFromTail()
 		Node *ptr;
 		//Traverse ptr through the list until you get to the 2nd to last element (tail)
 		for(ptr = head; ptr->next != tail; ptr = ptr->next);
+		//the following 3 lines are not included in the for loop
 		delete tail;	
 		tail = ptr;		//since tail was deleted, reset it to the node ptr is pointing to
 		tail->next = NULL;	//to make sure that it is the last element on the list
