@@ -18,11 +18,12 @@ int main()
 	list ll;
 	//ll.addToHead(f);
 	//ll.addToHead(p);
-	ll.addToTail(f);
-	ll.addToTail(p);
-	//ll.addNode(f,1);
-	//ll.addNode(p,2);
-	//ll.addNode(a,3);
+	//ll.addToTail(f);
+	//ll.addToTail(p);
+	ll.addNode(f,3);
+	ll.addNode(p,15);
+	ll.addNode(a,2);
+	//cout << "Size = " << ll.size() << endl;
 	ll.print();
 
 	return 0;

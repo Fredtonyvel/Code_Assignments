@@ -16,6 +16,14 @@ list::~list()
 	}
 }
 
+int list::size()
+{
+	int count = 0;
+	for (Node *ptr = head; ptr != NULL; ptr = ptr->next)
+		count++;
+	return count;
+}
+
 void list::addToHead(const Professor &professor)
 {
 	head = new Node(professor, head);
@@ -38,20 +46,26 @@ void list::addToTail(const Professor &professor)
 //Segmentation fault when list is empty and pos > 1
 void list::addNode(const Professor &professor, int pos)
 {
-	Node *ptr, *tmp;
-	tmp = head;
-
-	if (pos == 1)
+	if (size() < pos)
+	{	
+		cout << "Not enough positions on the list\n";
+		cout << "List size = " << size() << endl;
+		cout << "Inserting node at index " << size() << "\n\n";
+		addNode(professor, size());
+	}
+	else if (pos == 0)
 		head = new Node(professor, head);
 	else
 	{
-		for (int i = 0; i < pos-2; i++)
+		Node *ptr, *tmp, *curr = new Node(professor);
+		tmp = head;
+		for (int i = 0; i < pos; i++)
 		{
+			ptr = tmp;
 			tmp = tmp->next;
 		}
-		ptr = new Node(professor);
-		ptr->next = tmp->next;
-		tmp->next = ptr;
+		ptr->next = curr;
+		curr->next = tmp;
 	}
 }
 

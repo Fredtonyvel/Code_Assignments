@@ -40,6 +40,7 @@ public:
 	{
 		return head == NULL;
 	}
+	int size();
 	void addToHead(const Professor &professor);
 	void addToTail(const Professor &professor);
 	void addNode(const Professor &professor, int);
