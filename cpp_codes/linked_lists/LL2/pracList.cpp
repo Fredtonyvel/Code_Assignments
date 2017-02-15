@@ -41,9 +41,11 @@ void List::addToTail(int info)
 //Inserting element at any position on the list 
 void List::addNode(int info, int position)
 {
-	//t
-	//* * * * 
-	//  p
+	/*	Just a model to figure out how to add a node
+		t          t -> c -> p            t c p
+		* * *  =>  *    *    * *      =>  * * * *
+	  	  p            	|>(new node)    
+	*/
 	if (size() < position)
 	{
 		cout << "Invalid position!" << "\nCannot add " << info 
