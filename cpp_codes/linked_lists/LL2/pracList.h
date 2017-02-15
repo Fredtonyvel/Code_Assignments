@@ -31,6 +31,7 @@ public:
 	~List();
 
 	int isEmpty() {return head == NULL;}
+	int size();
 
 	//Insert Node member functions
 	void addToHead(int);

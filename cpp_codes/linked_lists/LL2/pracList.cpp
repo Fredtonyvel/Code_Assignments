@@ -39,9 +39,32 @@ void List::addToTail(int info)
 }
 
 //Inserting element at any position on the list 
-void List::addNode(int, int)
+void List::addNode(int info, int position)
 {
-	/* code */
+	//t
+	//* * * * 
+	//  p
+	if (size() < position)
+	{
+		cout << "Invalid position!" << "\nCannot add " << info 
+			 << " at position " << position << "\nSize of list = " 
+			 << size() << "\nAdding node at postion " << size() 
+			 << "\nStandby...\n";
+		addNode(info, size());
+	}
+	else if (position == 0)
+		head = new Node(info, head);
+	else
+	{
+		Node *tmp, *ptr = head, *curr = new Node(info);
+		for (int i = 0; i < position; i++)
+		{
+			tmp = ptr;
+			ptr = ptr->next;
+		}
+		tmp->next = curr;
+		curr->next = ptr;
+	}
 }
 
 //Removing element from front of the list
@@ -97,4 +120,13 @@ void List::printList()
 		ptr = ptr->next;  //move ptr to the next element
 	}
 	cout << "NULL\n\n";
+}
+
+int List::size()
+{
+	int count = 0;
+	for (Node *ptr = head; ptr != NULL; ptr = ptr->next)
+		count++;
+
+	return count;
 }

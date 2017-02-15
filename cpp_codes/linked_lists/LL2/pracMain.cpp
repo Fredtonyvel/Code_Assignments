@@ -21,8 +21,16 @@ int main()
 	
 	//if (!ll.isEmpty())
 	//	cout << "\nDeleted " << ll.deleteFromHead() << " from front of list\n";
-	if (!ll.isEmpty())
-		cout << "\nDeleted " << ll.deleteFromTail() << " from end of list\n";
+	//if (!ll.isEmpty())
+	//	cout << "\nDeleted " << ll.deleteFromTail() << " from end of list\n";
+	//ll.printList();
+
+	ll.addNode(15, 24);
 	ll.printList();
+	ll.addNode(23, 105);
+	ll.printList();
+	ll.addNode(4, 2);
+	ll.printList();
+	cout << "size = " << ll.size() << endl;
 	return 0;
 }
