@@ -105,7 +105,38 @@ int List::deleteFromTail()
 //Removing element from the list
 int List::deleteFromList(int info)
 {
-	//return ;
+	/* Diagram to remove node from list
+	   h     t   in=3
+	   1 2 3 4
+	       p 
+         t
+	*/
+	if (head->data == info && head == tail)
+	{	
+		delete head;
+		head = tail = NULL;
+	}
+	else if (info == head->data)
+	{
+		Node *ptr = head;
+		head = head->next;
+		delete ptr;
+	}
+	else
+	{
+		Node *ptr, *tmp;
+		for (tmp = head, ptr = head->next; ptr != NULL && !(ptr->data == info); tmp = tmp->next, ptr = ptr->next);
+		if (ptr != NULL)
+		{
+			tmp->next = ptr->next;	
+			if (ptr == tail)
+			{
+				tail = tmp;
+				delete ptr;
+			}
+		}
+	}
+	return info;
 }
 
 void List::printList()

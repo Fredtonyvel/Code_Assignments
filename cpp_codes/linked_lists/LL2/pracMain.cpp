@@ -25,12 +25,15 @@ int main()
 	//	cout << "\nDeleted " << ll.deleteFromTail() << " from end of list\n";
 	//ll.printList();
 
-	ll.addNode(15, 24);
+	ll.addNode(15, 0);
 	ll.printList();
-	ll.addNode(23, 105);
+	ll.addNode(23, 1);
 	ll.printList();
 	ll.addNode(4, 2);
 	ll.printList();
 	cout << "size = " << ll.size() << endl;
+
+	cout << "\nRemoved " << ll.deleteFromList(4) << endl;
+	ll.printList();
 	return 0;
 }
