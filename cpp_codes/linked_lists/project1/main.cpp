@@ -8,21 +8,16 @@ using namespace std;
 
 int main()
 {
-	Professor f("Freddy", "Velez", "5.15NB", "vfredanthony@yahoo.com", "347-813-6946");
-	//f.printProf();
-	Professor p("Angelica", "Velez", "6.63NB", "a_vele@hotmail.com", "347-239-1576");
-	Professor a("Emely", "Velez", "7.63NB", "emely_vele@gmail.com", "347-239-4675");
-	//cin >> p;
-	//cout << p;
+	Professor s("Anthony", "Velez", "5.15NB", "vfredanthony@yahoo.com", "347-813-6946");
+	Professor m("Angelica", "Velez", "6.63NB", "a_vele@hotmail.com", "347-239-1576");
+	Professor d("Emely", "Velez", "7.63NB", "emely_vele@gmail.com", "347-239-4675");
+	Professor f("Freddy", "Velez", "10.63NB", "f_velez@gmail.com", "347-528-0598");
 
 	list ll;
-	//ll.addToHead(f);
-	//ll.addToHead(p);
-	//ll.addToTail(f);
-	//ll.addToTail(p);
-	ll.addNode(f,3);
-	ll.addNode(p,15);
-	ll.addNode(a,2);
+	ll.addNode(s,23);
+	ll.addNode(m,1);
+	ll.addNode(d,14);
+	ll.addNode(f,0);
 	//cout << "Size = " << ll.size() << endl;
 	ll.print();
 
