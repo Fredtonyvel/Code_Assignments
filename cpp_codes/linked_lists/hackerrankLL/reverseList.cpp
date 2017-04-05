@@ -8,6 +8,22 @@ struct Node
 	Node* next;
 };
 
+bool isEmpty(Node *head)
+{
+	return head == NULL;
+}
+
+int length(Node* head)
+{
+	Node *ptr = head;
+	int count = 0;
+
+	for ( ; ptr != NULL; ptr = ptr->next)
+		count++;
+
+	return count;
+}
+
 Node* InsertFront(Node* head, int data)
 {
 	Node *ptr = new Node();
@@ -59,7 +75,7 @@ Node* Insert(Node *head, int data, int pos)
 	else
 	{
 		Node *tmp = head;
-		for (int i = 1; i < pos-1; i++)
+		for (int i = 0; i < pos; i++)
 		{
 			tmp = tmp->next;
 		}
@@ -152,41 +168,138 @@ Node* Reverse(Node* head)
 	return head;
 }
 
+Node* Search(Node *head, int data)
+{
+	Node *ptr = head;
+	
+	if(head == NULL)
+		return NULL;
+
+	for( ; ptr->data != data; ptr = ptr->next)
+	{
+		if(ptr->next == NULL)
+			return NULL;
+	}
+
+	return ptr;
+}
+
 void Print(Node* head)
 {
 	Node *temp = head;
+
+	cout << "List: ";
 	while(temp != NULL)
 	{
 		cout << temp->data << " -> ";
 		temp = temp->next;
 	}
 	cout << "NULL" << endl;
+	cout << "List size = " << length(head) << endl;
+}
+
+void Menu()
+{
+	cout << "Choose # from the following options:\n";
+	cout << "1. Print List\n";
+	cout << "2. Insert to front of the List\n";
+	cout << "3. Insert to end of the List\n";
+	cout << "4. Insert to a specific spot on List\n";
+	cout << "5. Delete first element from List\n";
+	cout << "6. Delete last element from List\n";
+	cout << "7. Delete specific element from List\n";
+	cout << "8. Reverse List\n";
+	cout << "9. Print size of List\n";
+	cout << "10. Exit\n\n";
 }
 
 int main()
 {
-	cout << "Reversing List - Iterative method\n\n";
-
+	cout << "Linked List - function method\n\n";
+	
+	int select, data, position;
 	Node* head = NULL;
+	
+	do
+	{
+		Menu();
+		cin >> select;
+
+		switch(select)
+		{
+			case 1: Print(head);
+					cout << endl;
+				break;
+			case 2: cout << "Enter number to insert: ";
+					cin >> data;
+					head = InsertFront(head, data);
+					cout << "Inserted " << data << " to the front of the list\n\n";
+				break;
+			case 3: cout << "Enter number to insert: ";
+					cin >> data;
+					head = InsertEnd(head, data);
+					cout << "Inserted " << data << " to the end of list\n\n";
+				break;
+			case 4: cout << "Enter number to insert: ";
+					cin >> data;
+					cout << "Enter position to insert from 0 - " << length(head)+1 << " to insert to list\n";
+					cin >> position;
+					if(position > length(head))
+						position = length(head);
+					head = Insert(head, data, position);
+					cout << "Inserted " << head->data << " to position(" << position << ")\n\n";
+				break;
+			case 5: head = DeleteFront(head);
+					cout << "Deleted first element from the list\n\n";
+				break;
+			case 6: head = DeleteEnd(head);
+					cout << "Deleted last element from the list\n\n";
+				break;
+			case 7: Print(head);
+					cout << "Enter element you want to delete from list: ";
+					cin >> data;
+					head = Delete(head, data);
+					cout << "Deleted " << data << " from the list\n\n";
+				break;
+			case 8: Reverse(head);
+					cout << "List reversed" << endl;
+				break;
+			case 9: cout << "List size = " << length(head) << endl << endl;
+				break;
+			case 10: cout << "Goodbye!\n\n";
+				break;
+			default: cout << "Enter valid number!" << endl;
+		}
+	} while (select != 10 && select <= 10);
+
+	//Node* head = NULL;
+	/*Print(head);
+	cout << "List size = " << length(head) << endl;
+	
 	head = InsertEnd(head, 40);
 	head = InsertEnd(head, 50);
 	head = InsertEnd(head, 60);
 	Print(head);
+	cout << "List size = " << length(head) << endl;
 
 	head = InsertFront(head, 30);
 	head = InsertFront(head, 20);
 	head = InsertFront(head, 10);
 	Print(head);
+	cout << "List size = " << length(head) << endl;
 
 	head = Reverse(head);
 	Print(head);
+	cout << "List size = " << length(head) << endl;
 
 	head = Reverse(head);
 	head = Insert(head,15,2);
 	Print(head);
+	cout << "List size = " << length(head) << endl;
 
 	head = Reverse(head);
 	Print(head);
+	cout << "List size = " << length(head) << endl;
 
 	head = DeleteFront(head);
 	Print(head);
@@ -207,7 +320,14 @@ int main()
 	Print(head);
 
 	head = Delete(head, 30);
-	Print(head);	
+	Print(head);
+	
+	Node *found = Search(head, 10);
 
+	if (found != NULL)
+		cout << "Found " << found->data << " in list" << endl;
+	else
+		cout << "Element not found on list" << endl;
+	*/
 	return 0;
 }
