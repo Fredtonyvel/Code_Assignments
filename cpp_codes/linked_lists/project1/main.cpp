@@ -21,5 +21,13 @@ int main()
 	//cout << "Size = " << ll.size() << endl;
 	ll.print();
 
+	/*string fname, lname;
+	cout << "Enter first name and then press enter to enter last name\n";
+	cout << "First Name: ";
+	cin >> fname;
+	cout << "Last Name: ";
+	cin >> lname;
+	cout << ll.search(fname, lname) << endl;*/
+
 	return 0;
 }

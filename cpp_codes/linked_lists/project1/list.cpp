@@ -6,24 +6,35 @@
 
 using namespace std;
 
+//Destructor to delete each node in the list
 list::~list()
 {
 	if (!isEmpty())
 	{
-		cout << "Deleting list..." << endl;
+		//cout << "\nDeleting list..." << endl;
 
-		//write code to delete each node
+		Node *ptr = head; //point ptr to head node
+		for(; ptr != NULL; ) //Will loop until end of the list is reached
+		{	
+			head = head->next; //Increment head node to next node in the list
+			delete ptr;
+			ptr = head; //reset ptr to the next node that head is pointing to
+		}
+		delete head, ptr;
 	}
 }
 
 int list::size()
 {
 	int count = 0;
-	for (Node *ptr = head; ptr != NULL; ptr = ptr->next)
+
+	//loop to count each node in the list
+	for (Node *ptr = head; ptr != NULL; ptr = ptr->next) 
 		count++;
 	return count;
 }
 
+//function to add new node to the front of the list
 void list::addToHead(const Professor &professor)
 {
 	head = new Node(professor, head);
@@ -31,6 +42,7 @@ void list::addToHead(const Professor &professor)
 		tail = head;
 }
 
+//function to add new node to the end of the list
 void list::addToTail(const Professor &professor)
 {	
 	if (isEmpty())
@@ -42,21 +54,24 @@ void list::addToTail(const Professor &professor)
 	}
 }
 
-//Fix bug issue with addNode()  
-//Segmentation fault when list is empty and pos > 1
+//Function to add professor anywhere in list 
 void list::addNode(const Professor &professor, int pos)
 {
+	/*Makes sure that user doesn't enter an out of bound position*/
 	if (size() < pos)
 	{	
-		cout << "Not enough positions on the list\n";
-		cout << "List size = " << size() << endl;
-		cout << "Inserting node at index " << size() << "\n\n";
-		addNode(professor, size());
+		//cout << "Not enough positions on the list\n";
+		//cout << "List size = " << size() << endl;
+		//cout << "Inserting node at index " << size() << "\n\n";
+
+		pos = size();
+		addNode(professor, pos); //Recursively calls function with adjusted postion
 	}
-	else if (pos == 0)
+	else if (pos == 0)	//Add to front of the list
 		head = new Node(professor, head);
 	else
 	{
+		//Add to list according to position 
 		Node *ptr, *tmp, *curr = new Node(professor);
 		tmp = head;
 		for (int i = 0; i < pos; i++)
@@ -67,6 +82,26 @@ void list::addNode(const Professor &professor, int pos)
 		ptr->next = curr;
 		curr->next = tmp;
 	}
+}
+
+//Function to search through list for professor first and last name
+string list::search(string findFName, string findLName)
+{
+	Node *ptr = head;
+
+	cout << "\nSearching list..." << endl;
+
+	//Traverse through the list
+	for( ; ptr != NULL; ptr = ptr->next)
+	{
+		//Loop stops until we find a match
+		if (ptr->professor.getFirstName() == findFName && ptr->professor.getLastName() == findLName)
+		{
+			return "\nFound " + ptr->professor.getFirstName() 
+			         + " " + ptr->professor.getLastName();
+		}
+	}
+	return "\nDidn't find " + findFName + " " + findLName;
 }
 
 void list::print()
@@ -86,28 +121,3 @@ void list::print()
 		ptr = ptr->next;
 	}
 }
-
-
-
-
-
-
-/*if (head == NULL)
-	{
-		head = tail = new Node(professor);
-		head->next = NULL;
-	}
-	else if (head->next == NULL)
-	{
-		Node *ptr = head;
-		head = new Node(professor);
-		head->next = tail = ptr;
-		ptr = NULL;
-	}
-	else
-	{
-		Node *ptr = head;
-		head = new Node(professor);
-		head->next = ptr;
-		ptr = NULL;
-	}*/

@@ -22,7 +22,7 @@ Professor::Professor(string fn, string ln, string rn, string e, string pn)
 
 Professor::~Professor()
 {
-	cout << "\nDeleting Professor information..." << endl;
+	//cout << "\nDeleting Professor information..." << endl;
 }
 
 string Professor::getFirstName()
