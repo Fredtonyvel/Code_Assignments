@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -67,7 +68,11 @@ Node* Insert(Node *head, int data, int pos)
 	Node *ptr = new Node();
 	ptr->data = data;
 
-	if (head == NULL)
+	if(pos > length(head))
+	{
+		head = Insert(head, data, length(head));
+	}
+	else if (head == NULL)
 	{
 		head = ptr;
 		ptr->next = NULL;
@@ -200,7 +205,7 @@ void Print(Node* head)
 
 void Menu()
 {
-	cout << "Choose # from the following options:\n";
+	cout << "\nChoose # from the following options:\n";
 	cout << "1. Print List\n";
 	cout << "2. Insert to front of the List\n";
 	cout << "3. Insert to end of the List\n";
@@ -210,15 +215,17 @@ void Menu()
 	cout << "7. Delete specific element from List\n";
 	cout << "8. Reverse List\n";
 	cout << "9. Print size of List\n";
-	cout << "10. Exit\n\n";
+	cout << "10. Search for element in the list\n";
+	cout << "11. Insert random numbers into list\n";
+	cout << "12 Exit\n\n";
 }
 
 int main()
 {
 	cout << "Linked List - function method\n\n";
 	
-	int select, data, position;
-	Node* head = NULL;
+	int select, data, position, num, x;
+	Node* head = NULL, *found;
 	
 	do
 	{
@@ -242,11 +249,9 @@ int main()
 				break;
 			case 4: cout << "Enter number to insert: ";
 					cin >> data;
-					cout << "Enter position to insert from 0 - " << length(head)+1 << " to insert to list\n";
+					cout << "Enter position to insert to list\n";
 					cin >> position;
-					if(position > length(head))
-						position = length(head);
-					head = Insert(head, data, position);
+					head = Insert(head, data, position);	
 					cout << "Inserted " << head->data << " to position(" << position << ")\n\n";
 				break;
 			case 5: head = DeleteFront(head);
@@ -261,16 +266,35 @@ int main()
 					head = Delete(head, data);
 					cout << "Deleted " << data << " from the list\n\n";
 				break;
-			case 8: Reverse(head);
+			case 8: head = Reverse(head);
 					cout << "List reversed" << endl;
 				break;
 			case 9: cout << "List size = " << length(head) << endl << endl;
 				break;
-			case 10: cout << "Goodbye!\n\n";
+			case 10: cout << "Enter element you want to find: ";
+					 cin >> data;
+					 found = Search(head, data);
+					 if (found != NULL)
+						cout << "Found " << found->data << " in list" << endl;
+					 else
+						cout << "Element not found on list" << endl;
+				break;
+			case 11: cout << "Enter how many numbers you want to enter: ";
+					 cin >> num;
+					 srand(time(0));
+					 for (int i = 0; i < num; i++)
+					 {
+					 	x = rand()%(num*3);
+					 	head = InsertEnd(head, x);
+					 }
+					 cout << num << " random numbers added to list\n";
+				break;
+			case 12: cout << "Goodbye!\n\n";
 				break;
 			default: cout << "Enter valid number!" << endl;
+					 cin >> select;
 		}
-	} while (select != 10 && select <= 10);
+	} while (select != 12);
 
 	//Node* head = NULL;
 	/*Print(head);
