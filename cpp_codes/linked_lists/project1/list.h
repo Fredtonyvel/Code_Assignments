@@ -43,7 +43,7 @@ public:
 	int size();
 	void addToHead(const Professor &professor);
 	void addToTail(const Professor &professor);
-	void addNode(const Professor &professor, int);
+	void insert(const Professor &professor);
 	string search(string, string);
 	void print();
 };

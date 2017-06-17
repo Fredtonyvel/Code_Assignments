@@ -12,12 +12,17 @@ int main()
 	Professor m("Jane", "Dane", "6.63NB", "janedane@aol.com", "917-654-7891");
 	Professor d("Karen", "Page", "7.63NB", "karenpage@aol.com", "347-239-4675");
 	Professor f("Bruce", "Allen", "10.63NB", "bruceallen@aol.com", "718-693-3348");
+	Professor g("Freddy", "Velez", "6.63NB", "freddyvelez@aol.com", "347-754-6251");
+	Professor h("Anthony", "Velez", "6.63NB", "freddyvelez@aol.com", "347-154-7251");
+
 
 	list ll;
-	ll.addNode(s,23);
-	ll.addNode(m,1);
-	ll.addNode(d,14);
-	ll.addNode(f,0);
+	ll.insert(s);
+	ll.insert(m);
+	ll.insert(d);
+	ll.insert(f);
+	ll.insert(g);
+	ll.insert(h);
 	//cout << "Size = " << ll.size() << endl;
 	ll.print();
 

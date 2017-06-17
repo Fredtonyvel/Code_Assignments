@@ -25,27 +25,27 @@ Professor::~Professor()
 	//cout << "\nDeleting Professor information..." << endl;
 }
 
-string Professor::getFirstName()
+string Professor::getFirstName() const
 {
 	return firstName;
 }
 
-string Professor::getLastName()
+string Professor::getLastName() const
 {
 	return lastName;
 }
 
-string Professor::getRoomNum()
+string Professor::getRoomNum() const
 {
 	return room;
 }
 
-string Professor::getEmail()
+string Professor::getEmail() const
 {
 	return email;
 }
 
-string Professor::getPhone()
+string Professor::getPhone() const
 {
 	return phone;
 }

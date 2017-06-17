@@ -55,33 +55,37 @@ void list::addToTail(const Professor &professor)
 }
 
 //Function to add professor anywhere in list 
-void list::addNode(const Professor &professor, int pos)
+void list::insert(const Professor &professor)
 {
-	/*Makes sure that user doesn't enter an out of bound position*/
-	if (size() < pos)
-	{	
-		//cout << "Not enough positions on the list\n";
-		//cout << "List size = " << size() << endl;
-		//cout << "Inserting node at index " << size() << "\n\n";
+	Node *curr = head;
+	Node *prev = NULL;
 
-		pos = size();
-		addNode(professor, pos); //Recursively calls function with adjusted postion
-	}
-	else if (pos == 0)	//Add to front of the list
+	if(head == NULL)
+	{
 		head = new Node(professor, head);
+		if(tail == NULL)
+			tail = head;
+	}
+	else if((curr->professor.getLastName() > professor.getLastName()) && (curr == head))
+	{
+		head = new Node(professor, head);
+		curr = head;
+	}
 	else
 	{
-		//Add to list according to position 
-		Node *ptr, *tmp, *curr = new Node(professor);
-		tmp = head;
-		for (int i = 0; i < pos; i++)
+		Node *tmp = new Node(professor);
+		while(curr->professor.getLastName() < professor.getLastName() && curr->next != NULL)
 		{
-			ptr = tmp;
-			tmp = tmp->next;
+			prev = curr;
+			curr = curr->next;
 		}
-		ptr->next = curr;
-		curr->next = tmp;
-	}
+		prev = curr;
+		curr = curr->next;
+		prev->next = tmp;
+		tmp->next = curr;
+		if (curr == NULL)
+			tail = tmp->next;
+	}	
 }
 
 //Function to search through list for professor first and last name

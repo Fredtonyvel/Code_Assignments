@@ -13,11 +13,11 @@ public:
 	Professor(string, string, string, string, string);
 	~Professor();
 
-	string getFirstName();
-	string getLastName();
-	string getRoomNum();
-	string getEmail();
-	string getPhone();
+	string getFirstName() const;
+	string getLastName() const;
+	string getRoomNum() const;
+	string getEmail() const;
+	string getPhone() const;
 	void printProf();
 
 	friend ostream &operator << (ostream &out, const Professor &p);
