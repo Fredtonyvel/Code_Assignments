@@ -16,9 +16,6 @@ public:
     double setInterest(double);
     double getInterest();
     void printRate();
-
-    void loadBalance();
-    void viewHistory();
 };
 
 #endif // SAVINGSACCOUNT_H_INCLUDED

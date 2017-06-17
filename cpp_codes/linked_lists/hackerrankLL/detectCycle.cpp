@@ -39,7 +39,10 @@ bool has_cycle(Node* head)
         fast = fast->next->next;
         
         if(slow == fast)
+        {
             return true;
+            break;
+        }
     }
     
     return false;   
