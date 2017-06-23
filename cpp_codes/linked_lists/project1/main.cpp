@@ -13,7 +13,7 @@ int main()
 	Professor d("Karen", "Page", "7.63NB", "karenpage@aol.com", "347-239-4675");
 	Professor f("Bruce", "Allen", "10.63NB", "bruceallen@aol.com", "718-693-3348");
 	Professor g("Freddy", "Velez", "6.63NB", "freddyvelez@aol.com", "347-754-6251");
-	Professor h("Anthony", "Allen", "6.63NB", "freddyvelez@aol.com", "347-154-7251");
+	Professor h("Anthony", "Velez", "6.63NB", "anthonyvelez@aol.com", "347-154-7251");
 
 	list ll;
 	ll.insert(s);
@@ -21,17 +21,17 @@ int main()
 	ll.insert(d);
 	ll.insert(f);
 	ll.insert(g);
-	//ll.insert(h);
-	//cout << "Size = " << ll.size() << endl;
+	ll.insert(h);
+	cout << "Size of professor list: " << ll.size() << endl;
 	ll.print();
 
-	/*string fname, lname;
+	string fname, lname;
 	cout << "Enter first name and then press enter to enter last name\n";
 	cout << "First Name: ";
 	cin >> fname;
 	cout << "Last Name: ";
 	cin >> lname;
-	cout << ll.search(fname, lname) << endl;*/
+	cout << ll.search(fname, lname) << endl;
 
 	return 0;
 }

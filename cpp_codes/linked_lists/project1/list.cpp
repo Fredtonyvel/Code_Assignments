@@ -85,11 +85,31 @@ void list::insert(const Professor &professor)
 					prev->next = tmp;
 					break;
 				}
-				else
+				/*else
 				{
 					tmp->next = curr->next;
 					curr->next = tmp;
 					break;
+				}*/
+			}
+			else if(curr->professor.getLastName() == professor.getLastName())
+			{
+				if(curr->professor.getFirstName() > professor.getFirstName() && prev == NULL)
+				{
+					head = new Node(professor, head);
+					curr = head;
+					break;
+				}
+				else if(curr->professor.getFirstName() > professor.getFirstName() && prev != NULL)
+				{
+					tmp->next = prev->next;
+					prev->next = tmp;
+					break;
+				}
+				else
+				{
+					prev = curr;
+					curr = curr->next;
 				}
 			}
 			else if(curr->next == NULL)
@@ -98,7 +118,7 @@ void list::insert(const Professor &professor)
 				tail = tmp;
 				break;
 			}
-			else /*if(curr->professor.getLastName() < professor.getLastName())*/
+			else
 			{
 				prev = curr;
 				curr = curr->next;
@@ -113,7 +133,7 @@ string list::search(string findFName, string findLName)
 {
 	Node *ptr = head;
 
-	cout << "\nSearching list..." << endl;
+	cout << "\n\nSearching list..." << endl;
 
 	//Traverse through the list
 	for( ; ptr != NULL; ptr = ptr->next)
@@ -121,27 +141,32 @@ string list::search(string findFName, string findLName)
 		//Loop stops until we find a match
 		if (ptr->professor.getFirstName() == findFName && ptr->professor.getLastName() == findLName)
 		{
-			return "\nFound " + ptr->professor.getLastName() 
-			         + ", " + ptr->professor.getFirstName();
+			return "\nFound: " + ptr->professor.getFirstName() 
+			        + " " + ptr->professor.getLastName()
+			        + "\nDisplaying info:" 
+			        + "\n  Name: " + ptr->professor.getLastName() + ", " + ptr->professor.getFirstName() 
+			        + "\n  Room #: " + ptr->professor.getRoomNum()  
+		 			+ "\n  Email: " + ptr->professor.getEmail()  
+		 			+ "\n  Phone #: " + ptr->professor.getPhone() + "\n";
 		}
 	}
-	return "\nDidn't find " + findLName + ", " + findFName;
+	return "\nDidn't find: " + findFName + " " + findLName;
 }
 
 void list::print()
 {
 	Node *ptr = head;
-	cout << "----------  List  ----------" << endl;
+	cout << "-----------  List  -----------" << endl;
 	while (ptr != NULL)
 	{
-		cout << "----------------------------\n";
+		cout << "------------------------------\n";
 		//ptr->professor.printProf();
-		cout << "Name: " << ptr->professor.getLastName() << ", " 
+		cout << "  Name: " << ptr->professor.getLastName() << ", " 
 			 << ptr->professor.getFirstName() << endl;
-		cout << "Room #: " << ptr->professor.getRoomNum() << endl;
-		cout << "Email: " << ptr->professor.getEmail() << endl;
-		cout << "Phone #: " << ptr->professor.getPhone() << endl;
-		cout << "----------------------------\n";
+		cout << "  Room #: " << ptr->professor.getRoomNum() << endl;
+		cout << "  Email: " << ptr->professor.getEmail() << endl;
+		cout << "  Phone #: " << ptr->professor.getPhone() << endl;
+		cout << "------------------------------\n";
 		ptr = ptr->next;
 	}
 }
