@@ -45,7 +45,8 @@ public:
 	void addToTail(const Professor &professor);
 	void insert(const Professor &professor);
 	string search(string, string);
-	void print();
+	void display();
+	void save();
 };
 
 #endif /* LIST_H */

@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 
 #include "Professor.h"
 #include "list.h"
@@ -34,34 +36,20 @@ int list::size()
 	return count;
 }
 
-//function to add new node to the front of the list
-void list::addToHead(const Professor &professor)
-{
-	head = new Node(professor, head);
-	if (tail == NULL)
-		tail = head;
-}
-
-//function to add new node to the end of the list
-void list::addToTail(const Professor &professor)
-{	
-	if (isEmpty())
-		head = tail = new Node(professor);
-	else
-	{
-		tail->next = new Node(professor);
-		tail = tail->next;
-	}
-}
-
-//Function to add professor anywhere in list 
+//Function to insert professor into the list in alphabetical sorted order
+/*
+Cases handled:
+ + add to list when empty
+ + add to list alphabetically by last name
+ + add to list alphabetically by first name only when last names are the same
+*/
 void list::insert(const Professor &professor)
 {
-	Node *curr = head;
+	Node *curr = head; //current ptr points to the first node in the list
 	Node *prev = NULL;
 	Node *tmp = new Node(professor);
 
-	if(head == NULL)
+	if(head == NULL) //when list is empty
 	{
 		head = new Node(professor, head);
 		if(tail == NULL)
@@ -69,30 +57,24 @@ void list::insert(const Professor &professor)
 	}
 	else
 	{
-		while(curr != NULL)
+		while(curr != NULL) //loop runs until end of list is reached
 		{
-			if(curr->professor.getLastName() > professor.getLastName())
+			if(curr->professor.getLastName() > professor.getLastName()) //checks list if the current professor's last name > the last name of the professor being inserted
 			{
-				if(prev == NULL)
+				if(prev == NULL) //means that the new node has been to be inserted in the front of the list 
 				{
 					head = new Node(professor, head);
 					curr = head;
-					break; 
+					break; //break statements used to break out of the while loop
 				}
-				else if(prev != NULL && prev->professor.getLastName() < professor.getLastName())
+				else if(prev != NULL && prev->professor.getLastName() < professor.getLastName()) // insert node after the current object since professor's last name is > than current professor's last name  
 				{
 					tmp->next = prev->next;
 					prev->next = tmp;
 					break;
 				}
-				/*else
-				{
-					tmp->next = curr->next;
-					curr->next = tmp;
-					break;
-				}*/
 			}
-			else if(curr->professor.getLastName() == professor.getLastName())
+			else if(curr->professor.getLastName() == professor.getLastName()) //if last name of the current professor is the same as new professor, then sort by first name
 			{
 				if(curr->professor.getFirstName() > professor.getFirstName() && prev == NULL)
 				{
@@ -112,13 +94,13 @@ void list::insert(const Professor &professor)
 					curr = curr->next;
 				}
 			}
-			else if(curr->next == NULL)
+			else if(curr->next == NULL) //the new professor's last name is greater than the rest on the list and is inserted at the end
 			{
 				curr->next = tmp;
 				tail = tmp;
 				break;
 			}
-			else
+			else //point the previous node to the current node and increment current point 
 			{
 				prev = curr;
 				curr = curr->next;
@@ -153,7 +135,7 @@ string list::search(string findFName, string findLName)
 	return "\nDidn't find: " + findFName + " " + findLName;
 }
 
-void list::print()
+void list::display()
 {
 	Node *ptr = head;
 	cout << "-----------  List  -----------" << endl;
@@ -170,3 +152,43 @@ void list::print()
 		ptr = ptr->next;
 	}
 }
+
+void list::save()
+{
+	ofstream file("Database_test.txt", ios::app);
+	if (!file.good())
+	{
+		cout << "File could not be opened" << endl;
+		return;
+	}
+
+	Node *ptr = head;
+	file << left << setw(20) << "Last Name" << setw(20) << "First Name" << setw(20) 
+		 << "Office #" << setw(20) << "Email" << setw(20) << "Phone #" << endl;
+	while (ptr != NULL)
+	{
+		file << left << setw(20) << ptr->professor.getLastName();
+		file << left << setw(20) << ptr->professor.getFirstName();
+		file << left << setw(20) << ptr->professor.getRoomNum();
+		file << left << setw(20) << ptr->professor.getEmail();
+		file << left << setw(20) << ptr->professor.getPhone() << endl;
+
+		ptr = ptr->next;
+	}
+
+	cout << "\n\nList saved to file" << endl;
+	file.close();
+}
+
+
+		
+		/*file << "-----------  List  -----------" << endl;
+		file << "------------------------------\n";
+		//ptr->professor.printProf();
+		file << "  Name: " << ptr->professor.getLastName() << ", " 
+			 << ptr->professor.getFirstName() << endl;
+		file << "  Room #: " << ptr->professor.getRoomNum() << endl;
+		file << "  Email: " << ptr->professor.getEmail() << endl;
+		file << "  Phone #: " << ptr->professor.getPhone() << endl;
+		file << "------------------------------\n";
+		ptr = ptr->next;*/
