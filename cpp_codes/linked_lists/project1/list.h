@@ -47,6 +47,7 @@ public:
 	string search(string, string);
 	void display();
 	void save();
+	void load();
 };
 
 #endif /* LIST_H */

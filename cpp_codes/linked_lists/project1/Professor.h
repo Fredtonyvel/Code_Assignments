@@ -13,6 +13,12 @@ public:
 	Professor(string, string, string, string, string);
 	~Professor();
 
+	void setFirstName(string);
+	void setLastName(string);
+	void setRoomNum(string);
+	void setEmail(string);
+	void setPhone(string);
+
 	string getFirstName() const;
 	string getLastName() const;
 	string getRoomNum() const;

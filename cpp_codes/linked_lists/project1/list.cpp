@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <vector>
+#include <sstream>
 
 #include "Professor.h"
 #include "list.h"
@@ -155,7 +157,7 @@ void list::display()
 
 void list::save()
 {
-	ofstream file("Database_test.txt", ios::app);
+	ofstream file("Database_test.csv");
 	if (!file.good())
 	{
 		cout << "File could not be opened" << endl;
@@ -163,15 +165,15 @@ void list::save()
 	}
 
 	Node *ptr = head;
-	file << left << setw(20) << "Last Name" << setw(20) << "First Name" << setw(20) 
-		 << "Office #" << setw(20) << "Email" << setw(20) << "Phone #" << endl;
+	file << left << "Last Name" << "," << "First Name" << "," 
+		 << "Office #" << "," << "Email" << "," << "Phone #" << endl;
 	while (ptr != NULL)
 	{
-		file << left << setw(20) << ptr->professor.getLastName();
-		file << left << setw(20) << ptr->professor.getFirstName();
-		file << left << setw(20) << ptr->professor.getRoomNum();
-		file << left << setw(20) << ptr->professor.getEmail();
-		file << left << setw(20) << ptr->professor.getPhone() << endl;
+		file << left << ptr->professor.getLastName();
+		file << left << "," << ptr->professor.getFirstName();
+		file << left << "," << ptr->professor.getRoomNum();
+		file << left << "," << ptr->professor.getEmail();
+		file << left << "," << ptr->professor.getPhone() << endl;
 
 		ptr = ptr->next;
 	}
@@ -180,15 +182,64 @@ void list::save()
 	file.close();
 }
 
+void list::load()
+{
+	ifstream file("Database_test.csv");
+	string line;
 
-		
-		/*file << "-----------  List  -----------" << endl;
-		file << "------------------------------\n";
-		//ptr->professor.printProf();
-		file << "  Name: " << ptr->professor.getLastName() << ", " 
-			 << ptr->professor.getFirstName() << endl;
-		file << "  Room #: " << ptr->professor.getRoomNum() << endl;
-		file << "  Email: " << ptr->professor.getEmail() << endl;
-		file << "  Phone #: " << ptr->professor.getPhone() << endl;
-		file << "------------------------------\n";
-		ptr = ptr->next;*/
+	if(!file.good())
+	{
+		cout << "File could not be opened" << endl;
+		return;
+	}
+
+	getline(file, line); //skip first line which is the title
+	//cout << "line = " << line << endl;
+	
+	vector<string> v_ln;
+	vector<string> v_fn;
+	vector<string> v_rm;
+	vector<string> v_em;
+	vector<string> v_ph;
+	int row = 0;
+	string ln, fn, rm, em, ph;
+
+	while(getline(file,line))
+	{
+		stringstream text(line);
+
+		getline(text, ln, ',');
+		v_ln.push_back(ln);
+
+		getline(text, fn, ',');
+		v_fn.push_back(fn);
+
+		getline(text, rm, ',');
+		v_rm.push_back(rm);
+
+		getline(text, em, ',');
+		v_em.push_back(em);
+
+		getline(text, ph);
+		v_ph.push_back(ph);
+
+		row++;
+	}
+
+	Professor profArray[row];
+	for(int i = 0; i < row; i++)
+	{
+		//profArray[i] = new Professor(v_ln[i], v_fn[i], v_rm[i], v_em[i], v_ph[i]);
+		profArray[i].setLastName(v_ln[i]);
+		profArray[i].setFirstName(v_fn[i]);
+		profArray[i].setRoomNum(v_rm[i]);
+		profArray[i].setEmail(v_em[i]);
+		profArray[i].setPhone(v_ph[i]);
+		insert(profArray[i]);
+		display();
+	}
+
+	cout << "\n\nFile loaded to screen" << endl;
+
+	file.close();
+}

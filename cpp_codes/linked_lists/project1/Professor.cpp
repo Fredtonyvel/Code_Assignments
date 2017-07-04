@@ -25,6 +25,31 @@ Professor::~Professor()
 	//cout << "\nDeleting Professor information..." << endl;
 }
 
+void Professor::setFirstName(string fn)
+{
+	firstName = fn;
+}
+
+void Professor::setLastName(string ln)
+{
+	lastName = ln;
+}
+
+void Professor::setRoomNum(string rn)
+{
+	room = rn;
+}
+
+void Professor::setEmail(string em)
+{
+	email = em;
+}
+
+void Professor::setPhone(string ph)
+{
+	phone = ph;
+}
+
 string Professor::getFirstName() const
 {
 	return firstName;
