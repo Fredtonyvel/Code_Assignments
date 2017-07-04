@@ -13,8 +13,8 @@ Professor::Professor()
 
 Professor::Professor(string fn, string ln, string rn, string e, string pn)
 {
-	firstName = fn;
 	lastName = ln;
+	firstName = fn;
 	room = rn;
 	email = e;
 	phone = pn;
@@ -77,15 +77,17 @@ string Professor::getPhone() const
 
 void Professor::printProf()
 {
-	cout << "Professor name: " << firstName << ", " << lastName << endl;
-	cout << "Office location: " << room << endl;
-	cout << "Email: " << email << endl;
-	cout << "Contact number: " << phone << endl;
+	cout << "------------------------------\n";
+	cout << "  Name: " << lastName << ", " << firstName << endl;
+	cout << "  Room #: " << room << endl;
+	cout << "  Email: " << email << endl;
+	cout << "  Phone #: " << phone << endl;
+	cout << "------------------------------\n";
 }
 
 ostream &operator << (ostream &out, const Professor &p)
 {
-	out << "Professor Name: " << p.firstName << " " << p.lastName << endl;
+	out << "Professor Name: " << p.lastName << " " << p.firstName << endl;
 	out << "Office Room #: " << p.room << endl;
 	out << "Email: " << p.email << endl;
 	out << "Phone #: " << p.phone << endl;

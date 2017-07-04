@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
 	ll.insert(g);
 	ll.insert(h);
 	ll.insert(i);
-	//ll.display();
+	ll.display();
 	ll.save();
 	ll.load();
 	//cout << "\nSize of professor list: " << ll.size() << endl;

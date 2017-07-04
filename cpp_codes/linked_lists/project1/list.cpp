@@ -154,7 +154,7 @@ void list::display()
 		ptr = ptr->next;
 	}
 }
-
+ 
 void list::save()
 {
 	ofstream file("Database_test.csv");
@@ -178,7 +178,7 @@ void list::save()
 		ptr = ptr->next;
 	}
 
-	cout << "\n\nList saved to file" << endl;
+	cout << "\nList saved to file" << endl;
 	file.close();
 }
 
@@ -226,20 +226,16 @@ void list::load()
 		row++;
 	}
 
-	Professor profArray[row];
+	Professor * profArray[row];
+	cout << "\nDisplaying Professor Information" << endl;
+	cout << "------------------------------" << endl;
 	for(int i = 0; i < row; i++)
 	{
-		//profArray[i] = new Professor(v_ln[i], v_fn[i], v_rm[i], v_em[i], v_ph[i]);
-		profArray[i].setLastName(v_ln[i]);
-		profArray[i].setFirstName(v_fn[i]);
-		profArray[i].setRoomNum(v_rm[i]);
-		profArray[i].setEmail(v_em[i]);
-		profArray[i].setPhone(v_ph[i]);
-		insert(profArray[i]);
-		display();
+		profArray[i] = new Professor(v_fn[i], v_ln[i], v_rm[i], v_em[i], v_ph[i]);
+		profArray[i]->printProf();
 	}
 
-	cout << "\n\nFile loaded to screen" << endl;
+	cout << "File loaded to screen" << endl;
 
 	file.close();
 }
