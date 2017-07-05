@@ -226,13 +226,13 @@ void list::load()
 		row++;
 	}
 
-	Professor * profArray[row];
+	Professor profArray;
 	cout << "\nDisplaying Professor Information" << endl;
 	cout << "------------------------------" << endl;
 	for(int i = 0; i < row; i++)
 	{
-		profArray[i] = new Professor(v_fn[i], v_ln[i], v_rm[i], v_em[i], v_ph[i]);
-		profArray[i]->printProf();
+		Professor profArray(v_fn[i], v_ln[i], v_rm[i], v_em[i], v_ph[i]);
+		insert(profArray);
 	}
 
 	cout << "File loaded to screen" << endl;

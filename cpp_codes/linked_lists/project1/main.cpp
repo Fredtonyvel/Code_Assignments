@@ -26,7 +26,66 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName)
 
 int main(int argc, char* argv[])
 {
-	Professor s("Tony", "Doe", "5.63NB", "tonydoe@aol.com", "646-555-2697");
+	cout << "John Jay College of Criminal Justice Professor Database" << endl;
+	char select;
+	int choice;
+
+	Professor prof;
+	list ll;
+	string fname, lname;
+
+	while(select != 'q')
+	{
+		cout << "\n\nSelect # from the menu" << endl;
+		cout << "'1' - Add Professor\n";
+		cout << "'2' - Delete Professor\n";
+		cout << "'3' - Search Professor\n";
+		cout << "'4' - Display\n";
+		cout << "'5' - Save data to database\n";
+		cout << "'6' - Load data from database\n";
+		cout << "'7' - Exit\n\n";
+
+		cout << "Enter number: ";
+		cin >> choice;
+		cout << endl;
+		
+		switch(choice)
+		{
+			case 1 : cin >> prof;
+				     ll.insert(prof);
+				     break;
+
+			case 2 : //Will be implemented soon
+					 break;
+
+			case 3 : cout << "Enter first name and then press enter to enter last name\n";
+					 cout << "First Name: ";
+					 cin >> fname;
+					 cout << "Last Name: ";
+					 cin >> lname;
+					 cout << ll.search(fname, lname) << endl;
+					 break;
+
+			case 4 : ll.display();
+					 break;
+
+			case 5 : ll.save();
+					 break;
+
+			case 6 : ll.load();
+					 break;
+
+			case 7 : select = 'q';
+					 cout << "Goodbye!\n";
+					 break;
+
+			default : cout << "Number entered invalid!!" << endl;
+					  break;
+		}
+
+	}
+
+	/*Professor s("Tony", "Doe", "5.63NB", "tonydoe@aol.com", "646-555-2697");
 	Professor m("Jane", "Dane", "6.63NB", "janedane@aol.com", "917-654-7891");
 	Professor d("Karen", "Page", "7.63NB", "karenpage@aol.com", "347-239-4675");
 	Professor f("Bruce", "Allen", "10.63NB", "bruceallen@aol.com", "718-693-3348");
@@ -44,7 +103,7 @@ int main(int argc, char* argv[])
 	ll.insert(i);
 	ll.display();
 	ll.save();
-	ll.load();
+	ll.load();*/
 	//cout << "\nSize of professor list: " << ll.size() << endl;
 
 	/*string fname, lname;
