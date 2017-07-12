@@ -44,6 +44,7 @@ public:
 	void addToHead(const Professor &professor);
 	void addToTail(const Professor &professor);
 	void insert(const Professor &professor);
+	void remove(string, string);
 	string search(string, string);
 	void display();
 	void save();

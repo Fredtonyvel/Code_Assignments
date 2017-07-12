@@ -109,7 +109,39 @@ void list::insert(const Professor &professor)
 			}
 		}
 	}	
-		
+}
+
+//Function to delete professor from list
+void list::remove(string firstName, string lastName)
+{
+	Node *curr = head;
+	Node *ptr = NULL;
+
+	while(curr != NULL)
+	{
+		if(curr->professor.getFirstName() == firstName && curr->professor.getLastName() == lastName && curr == head)
+		{
+			head = head->next;
+			delete curr;
+			cout << "Deleted " << firstName << " " << lastName << " from the list" << endl;
+			break;
+		}
+		else if(curr->professor.getFirstName() == firstName && curr->professor.getLastName() == lastName && curr != head)
+		{
+			ptr->next = curr->next;
+			delete curr;
+			cout << "Deleted " << firstName << " " << lastName << " from the list" << endl;
+			break;
+		}
+		else
+		{
+			ptr = curr;
+			curr = curr->next;
+		}
+	}
+
+	if(curr == NULL)
+		cout << firstName << " " << lastName << " not found on the list" << endl;
 }
 
 //Function to search through list for professor first and last name
@@ -227,8 +259,6 @@ void list::load()
 	}
 
 	Professor profArray;
-	cout << "\nDisplaying Professor Information" << endl;
-	cout << "------------------------------" << endl;
 	for(int i = 0; i < row; i++)
 	{
 		Professor profArray(v_fn[i], v_ln[i], v_rm[i], v_em[i], v_ph[i]);

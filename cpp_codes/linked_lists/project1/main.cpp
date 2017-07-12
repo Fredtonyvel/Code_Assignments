@@ -55,7 +55,12 @@ int main(int argc, char* argv[])
 				     ll.insert(prof);
 				     break;
 
-			case 2 : //Will be implemented soon
+			case 2 : cout << "Enter first name and then press enter to enter last name\n";
+					 cout << "First Name: ";
+					 cin >> fname;
+					 cout << "Last Name: ";
+					 cin >> lname;
+					 ll.remove(fname, lname);
 					 break;
 
 			case 3 : cout << "Enter first name and then press enter to enter last name\n";
